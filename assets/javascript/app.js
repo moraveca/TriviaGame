@@ -9,7 +9,7 @@ var questions = [
     "What will question eight be?"]
 
 var answers = {
-    a0: ["Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    a0: ["1Answer 1", "Answer 2", "Answer 3", "Answer 4"],
     a1: ["2Answer 1", "Answer 2", "Answer 3", "Answer 4"],
     a2: ["3Answer 1", "Answer 2", "Answer 3", "Answer 4"],
     a3: ["4Answer 1", "Answer 2", "Answer 3", "Answer 4"],
@@ -26,6 +26,12 @@ var time = 5; //change this to 30 or whatever when ready for longer time
 
 var timeInterval;
 
+var correct = 0;
+
+var wrong = 0;
+
+var clicked = false;
+
 function startCountdown() {
     timeInterval = setInterval(countdown, 1000);
 }
@@ -33,155 +39,416 @@ function startCountdown() {
 function countdown() {
     time--;
     $("#time-box").text(time);
-    checkTimer();
+    console.log("time: " + time);
+    // checkTimer();
+    checker();
 }
 
-function checkTimer() {
-    if (time === 0) {
-        clearInterval(timeInterval);
-        console.log("time done: " + time);
-        console.log(currentQuestion);
-        nextQuestion();
+
+// This one worked for time only......
+// function checkTimer() {
+//     if (time === 0) {
+//         clearInterval(timeInterval);
+//         nextQuestion();
+//         $("#time-box").text("30");
+//     }
+// }
+
+function moveOn() {
+    clearInterval(timeInterval);
+    nextQuestion();
+    $("#time-box").text("30");
+}
+
+function checker() {
+    if (clicked) {
+        console.log("currentQuestion: " + currentQuestion)
+        moveOn();
+    } else if (time === 0) {
+        moveOn();
     }
-
 }
+
+$("#start-button").on("click", function(){
+    $("#start-button").hide();
+    $("#time-box").text(30);
+
+    $("#question-box").text(questions[0]);
+
+    $("#first-choice").text(answers.a0[0]);
+    $("#second-choice").text(answers.a0[1]);
+    $("#third-choice").text(answers.a0[2]);
+    $("#fourth-choice").text(answers.a0[3]);
+
+    currentQuestion = questions[0];    
+    startCountdown();
+
+    $("#first-choice").on("click", function() {
+        correct++;
+        console.log("correct: " + correct + "//wrong: " + wrong);
+        console.log("I clicked #first-choice.(first)");
+        clicked = true;
+    });
+
+    $("#second-choice").on("click", function() {
+        wrong++;
+        console.log("correct: " + correct + "//wrong: " + wrong);
+        console.log("I clicked #second-choice.(first)");
+        clicked = true;
+    });
+
+    $("#third-choice").on("click", function() {
+        wrong++;
+        console.log("correct: " + correct + "//wrong: " + wrong);
+        console.log("I clicked #third-choice.(first)");
+        clicked = true;
+    });
+
+    $("#fourth-choice").on("click", function() {
+        wrong++;
+        console.log("correct: " + correct + "//wrong: " + wrong);
+        console.log("I clicked #fourth-choice.(first)");
+        clicked = true;
+    });
+
+    checker();
+});
+
 
 function nextQuestion() {
-
+    
     if (currentQuestion === questions[0]) {
+        
         $("#question-box").text(questions[1]);
+
         $("#first-choice").text(answers.a1[0]);
         $("#second-choice").text(answers.a1[1]);
         $("#third-choice").text(answers.a1[2]);
         $("#fourth-choice").text(answers.a1[3]);
-    
-        time = 5; //change this to actual time when ready as well
-        startCountdown();
+
         currentQuestion = questions[1];
-        console.log("currentQuestion: " + currentQuestion);
+        clicked = false;
+
+        time = 5; //change this to actual time when ready as well
+        
+        startCountdown();
+
+        $("#first-choice").on("click", function() {
+            correct++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #first-choice.(second)");
+            clicked = true;
+        });
+    
+        $("#second-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #second-choice.(second)");
+            clicked = true;
+        });
+    
+        $("#third-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #third-choice.(second)");
+            clicked = true;
+        });
+    
+        $("#fourth-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #fourth-choice.(second)");
+            clicked = true;
+        });
+
+        checker();
+        
 
     } else if (currentQuestion === questions[1]) {
         $("#question-box").text(questions[2]);
+
         $("#first-choice").text(answers.a2[0]);
         $("#second-choice").text(answers.a2[1]);
         $("#third-choice").text(answers.a2[2]);
         $("#fourth-choice").text(answers.a2[3]);
-    
-        time = 5; //change this to actual time when ready as well
-        startCountdown();
+
         currentQuestion = questions[2];
-        console.log("currentQuestion: " + currentQuestion);
+        clicked = false;
+            
+        time = 5; //change this to actual time when ready as well
+        
+        startCountdown();
+
+        $("#first-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #first-choice.(third)");
+            clicked = true;
+        });
+    
+        $("#second-choice").on("click", function() {
+            correct++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #second-choice.(third)");
+            clicked = true;
+        });
+    
+        $("#third-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #third-choice.(third)");
+            clicked = true;
+        });
+    
+        $("#fourth-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #fourth-choice.(third)");
+            clicked = true;
+        });    
+
+        checker();
+
 
     } else if (currentQuestion === questions[2]) {
         $("#question-box").text(questions[3]);
+
         $("#first-choice").text(answers.a3[0]);
         $("#second-choice").text(answers.a3[1]);
         $("#third-choice").text(answers.a3[2]);
         $("#fourth-choice").text(answers.a3[3]);
-    
-        time = 5; //change this to actual time when ready as well
-        startCountdown();
+
         currentQuestion = questions[3];
-        console.log("currentQuestion: " + currentQuestion);
+        clicked = false;
+
+        time = 5; //change this to actual time when ready as well
+        
+        startCountdown();
+
+        $("#first-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #first-choice.(fourth)");
+            clicked = true;
+        });
+    
+        $("#second-choice").on("click", function() {
+            correct++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #second-choice.(fourth)");
+            clicked = true;
+        });
+    
+        $("#third-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #third-choice.(fourth)");
+            clicked = true;
+        });
+    
+        $("#fourth-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #fourth-choice.(fourth)");
+            clicked = true;
+        });
+    
+        checker();
+
 
     } else if (currentQuestion === questions[3]) {
         $("#question-box").text(questions[4]);
+
         $("#first-choice").text(answers.a4[0]);
         $("#second-choice").text(answers.a4[1]);
         $("#third-choice").text(answers.a4[2]);
         $("#fourth-choice").text(answers.a4[3]);
+
+        currentQuestion = questions[4];
+        clicked = false;
     
         time = 5; //change this to actual time when ready as well
+        
         startCountdown();
-        currentQuestion = questions[4];
-        console.log("currentQuestion: " + currentQuestion);
+
+        $("#first-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #first-choice.(fifth)");
+            clicked = true;
+        });
+    
+        $("#second-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #second-choice.(fifth)");
+            clicked = true;
+        });
+    
+        $("#third-choice").on("click", function() {
+            correct++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #third-choice.(fifth)");
+            clicked = true;
+        });
+    
+        $("#fourth-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #fourth-choice.(fifth)");
+            clicked = true;
+        });
+    
+        checker();
+
 
     } else if (currentQuestion === questions[4]) {
         $("#question-box").text(questions[5]);
+
         $("#first-choice").text(answers.a5[0]);
         $("#second-choice").text(answers.a5[1]);
         $("#third-choice").text(answers.a5[2]);
         $("#fourth-choice").text(answers.a5[3]);
+
+        currentQuestion = questions[5];
+        clicked = false;
     
         time = 5; //change this to actual time when ready as well
+        
         startCountdown();
-        currentQuestion = questions[5];
-        console.log("currentQuestion: " + currentQuestion);
+
+        $("#first-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #first-choice.(sixth)");
+            clicked = true;
+        });
+    
+        $("#second-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #second-choice.(sixth)");
+            clicked = true;
+        });
+    
+        $("#third-choice").on("click", function() {
+            correct++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #third-choice.(sixth)");
+            clicked = true;
+        });
+    
+        $("#fourth-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #fourth-choice.(sixth)");
+            clicked = true;
+        });
+    
+        checker();
+
 
     } else if (currentQuestion === questions[5]) {
         $("#question-box").text(questions[6]);
+
         $("#first-choice").text(answers.a6[0]);
         $("#second-choice").text(answers.a6[1]);
         $("#third-choice").text(answers.a6[2]);
         $("#fourth-choice").text(answers.a6[3]);
+
+        currentQuestion = questions[6];
+        clicked = false;
     
         time = 5; //change this to actual time when ready as well
+        
         startCountdown();
-        currentQuestion = questions[6];
-        console.log("currentQuestion: " + currentQuestion);
+
+        $("#first-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #first-choice.(seventh)");
+            clicked = true;
+        });
+    
+        $("#second-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #second-choice.(seventh)");
+            clicked = true;
+        });
+    
+        $("#third-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #third-choice.(seventh)");
+            clicked = true;
+        });
+    
+        $("#fourth-choice").on("click", function() {
+            correct++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #fourth-choice.(seventh)");
+            clicked = true;
+        });
+    
+        checker();
+
 
     } else if (currentQuestion === questions[6]) {
         $("#question-box").text(questions[7]);
+
         $("#first-choice").text(answers.a7[0]);
         $("#second-choice").text(answers.a7[1]);
         $("#third-choice").text(answers.a7[2]);
         $("#fourth-choice").text(answers.a7[3]);
+
+        currentQuestion = questions[7];
+        clicked = false;
     
         time = 5; //change this to actual time when ready as well
+        
         startCountdown();
-        currentQuestion = questions[7];
-        console.log("currentQuestion: " + currentQuestion);
+
+        $("#first-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #first-choice.(eighth)");
+            clicked = true;
+        });
+    
+        $("#second-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #second-choice.(eighth)");
+            clicked = true;
+        });
+    
+        $("#third-choice").on("click", function() {
+            wrong++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #third-choice.(eighth)");
+            clicked = true;
+        });
+    
+        $("#fourth-choice").on("click", function() {
+            correct++;
+            console.log("correct: " + correct + "//wrong: " + wrong);
+            console.log("I clicked #fourth-choice.(eighth)");
+            clicked = true;
+        });
+    
+        checker();
+
+        
     } else if (currentQuestion === questions[7]) {
+
         endGame();
     }
     
 }
 
+
+
 function endGame() {
     $(".question-card").text("Game Over.");
 }
-
-
-
-
-
-
-$("#start-button").on("click", function(){
-    $("#time-box").text(30);
-    $("#question-box").text(questions[0]);
-    $("#first-choice").text(answers.a0[0]);
-    $("#second-choice").text(answers.a0[1]);
-    $("#third-choice").text(answers.a0[2]);
-    $("#fourth-choice").text(answers.a0[3]);
-    currentQuestion = questions[0];
-    startCountdown();
-});
-
-
-
-
-
-
-//   $("#lap").on("click", stopwatch.recordLap);
-
-
-
-// intervalId = setInterval(count, 1000);
-
-// function count() {
-
-//     // DONE: increment time by 1, remember we cant use "this" here.
-//     time++;
-  
-//     // DONE: Get the current time, pass that into the timeConverter function,
-//     //       and save the result in a variable.
-//     var converted = timeConverter(time);
-//     console.log(converted);
-  
-//     // DONE: Use the variable we just created to show the converted time in the "display" div.
-//     $("#display").text(converted);
-//   }
-  
-
-
-// setTimeout(function(){ alert("Hello"); }, 3000);
