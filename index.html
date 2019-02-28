@@ -5,23 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Cardo" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 <body>
 
-<div id="game-box">
+<div id="background">
+
+
+<div class="col" id="game-box">
 
     <div id="title-card">
-        <h1>Trivia Game</h1>
+        <h1>Broadway Trivia</h1>
     </div>
-
+    <div class="text-center">
     <button type="button" class="btn btn-warning" id="start-button">Start</button>
-
-    <div class="question-card">
+    </div>
+    <div class="question-card text-center">
         <div id="time-box"></div>
-        <div id="question-box"></div>
+        <h2 id="question-box"></h2>
         <div id="answers-box">
             <div id="first-choice"></div>
             <div id="second-choice"></div>
@@ -29,7 +33,7 @@
             <div id="fourth-choice"></div>
         </div>
     </div>
-    <div class="reveal-card">
+    <div class="reveal-card text-center">
         <div id="get-ready"></div>
     </div>
 
@@ -39,7 +43,7 @@
 
 
 
-
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

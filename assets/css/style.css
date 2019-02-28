@@ -1,3 +1,29 @@
-body {
-    background-color:gray;
+body, html {
+    height: 100%;
+    font-family: 'Cardo', serif;
+  }
+
+#background { 
+    background-image: url("../images/liam-macleod-1114704-unsplash.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+#game-box {
+    background-color: white;
+    position: relative;
+    width: auto;
 }
+
+#title-card {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Bungee Shade', cursive;
+}
+
+
+

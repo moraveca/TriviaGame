@@ -1,22 +1,16 @@
 var questions = [
-    "What will question one be?",
-    "What will question two be?",
-    "What will question three be?",
-    "What will question four be?",
-    "What will question five be?",
-    "What will question six be?",
-    "What will question seven be?",
-    "What will question eight be?"]
+    "What is the highest grossing Broadway show?",
+    "Which Broadway show won the most Tony Awards?",
+    "What is the longest running Broadway musical?",
+    "How many actors have played the Phantom on Broadway?",
+    "How many Broadway theatres are there right now?"]
 
 var answers = {
-    a0: ["1Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    a1: ["2Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    a2: ["3Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    a3: ["4Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    a4: ["5Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    a5: ["6Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    a6: ["7Answer 1", "Answer 2", "Answer 3", "Answer 4"],
-    a7: ["8Answer 1", "Answer 2", "Answer 3", "Answer 4"],
+    a0: ["The Lion King", "Phantom of the Opera", "Les Miserables", "Hamilton"],
+    a1: ["The Producers", "Hamilton", "Wicked", "My Fair Lady"],
+    a2: ["Cats", "Chicago", "Phantom of the Opera", "The Lion King"],
+    a3: ["3", "7", "12", "15"],
+    a4: ["17", "40", "55", "82"],
 }
 
 var currentQuestion;
@@ -44,7 +38,7 @@ function countdown() {
     console.log("time: " + time);
     if (time === 0) {
         clearInterval(timeInterval);
-        nextQuestion();
+        outOfTime();
     }
 }
 
@@ -74,12 +68,6 @@ function nextQuestion() {
     } else if (currentQuestion === questions[3]) {
         fifthQuestion();
     } else if (currentQuestion === questions[4]) {
-        sixthQuestion();
-    } else if (currentQuestion === questions[5]) {
-        seventhQuestion();
-    } else if (currentQuestion === questions[6]) {
-        eighthQuestion();
-    } else if (currentQuestion === questions[7]) {
         endGame();
     }
 }
@@ -91,6 +79,7 @@ function youAreRight() {
     correct++;
     console.log("correct: " + correct + " //wrong: " + wrong);
     $(".question-card").hide();
+    $(".reveal-card").show();
     $(".reveal-card").text("You are RIGHT!");
     $("#get-ready").text(5);
     time2 = 5;
@@ -102,16 +91,31 @@ function youAreWrong() {
     wrong++;
     console.log("correct: " + correct + " //wrong: " + wrong);
     $(".question-card").hide();
+    $(".reveal-card").show();
     $(".reveal-card").text("You are WRONG!");
-    startCountdown2();
     time2 = 5;
+    startCountdown2();
+}
+
+function outOfTime() {
+    clearInterval(timeInterval);
+    wrong++;
+    console.log("correct: " + correct + " //wrong: " + wrong);
+    $(".question-card").hide();
+    $(".reveal-card").show();
+    $(".reveal-card").text("Too late!");
+    time2 = 5;
+    startCountdown2();
+
 }
 
 
 
 
 function endGame() {
-    $(".question-card").text("Game Over.");
+    console.log("endGame");
+    $(".reveal-card").hide();
+    $(".question-card").show().html("<h2>Game Over.</h2><br><h3>Correct: </h3>" + correct + "<br><h3>Wrong: </h3>" + wrong);
 }
 
 
@@ -202,11 +206,11 @@ function thirdQuestion() {
     });
 
     $("#second-choice").on("click", function() {
-        youAreRight();
+        youAreWrong();
     });
 
     $("#third-choice").on("click", function() {
-        youAreWrong();
+        youAreRight();
     });
 
     $("#fourth-choice").on("click", function() {
@@ -236,7 +240,7 @@ function fourthQuestion() {
     });
 
     $("#second-choice").on("click", function() {
-        youAreRight();
+        youAreWrong();
     });
 
     $("#third-choice").on("click", function() {
@@ -244,7 +248,7 @@ function fourthQuestion() {
     });
 
     $("#fourth-choice").on("click", function() {
-        youAreWrong();
+        youAreRight();
     });
 }
 
@@ -270,75 +274,7 @@ function fifthQuestion() {
     });
 
     $("#second-choice").on("click", function() {
-        youAreWrong();
-    });
-
-    $("#third-choice").on("click", function() {
         youAreRight();
-    });
-
-    $("#fourth-choice").on("click", function() {
-        youAreWrong();
-    });
-}
-
-function sixthQuestion() {
-    $(".reveal-card").hide();
-    $(".question-card").show();
-
-    $("#question-box").text(questions[5]);
-
-    $("#first-choice").text(answers.a5[0]);
-    $("#second-choice").text(answers.a5[1]);
-    $("#third-choice").text(answers.a5[2]);
-    $("#fourth-choice").text(answers.a5[3]);
-
-    currentQuestion = questions[5];
-
-    time = 5; //change this to actual time when ready as well
-    
-    startCountdown();
-
-    $("#first-choice").on("click", function() {
-        youAreWrong();
-    });
-
-    $("#second-choice").on("click", function() {
-        youAreWrong();
-    });
-
-    $("#third-choice").on("click", function() {
-        youAreRight();
-    });
-
-    $("#fourth-choice").on("click", function() {
-        youAreWrong();
-    });
-}
-
-function seventhQuestion() {
-    $(".reveal-card").hide();
-    $(".question-card").show();
-
-    $("#question-box").text(questions[6]);
-
-    $("#first-choice").text(answers.a6[0]);
-    $("#second-choice").text(answers.a6[1]);
-    $("#third-choice").text(answers.a6[2]);
-    $("#fourth-choice").text(answers.a6[3]);
-
-    currentQuestion = questions[6];
-
-    time = 5; //change this to actual time when ready as well
-    
-    startCountdown();
-
-    $("#first-choice").on("click", function() {
-        youAreWrong();
-    });
-
-    $("#second-choice").on("click", function() {
-        youAreWrong();
     });
 
     $("#third-choice").on("click", function() {
@@ -346,41 +282,7 @@ function seventhQuestion() {
     });
 
     $("#fourth-choice").on("click", function() {
-        youAreRight();
-    });
-}
-
-function eighthQuestion() {
-    $(".reveal-card").hide();
-    $(".question-card").show();
-
-    $("#question-box").text(questions[7]);
-
-    $("#first-choice").text(answers.a7[0]);
-    $("#second-choice").text(answers.a7[1]);
-    $("#third-choice").text(answers.a7[2]);
-    $("#fourth-choice").text(answers.a7[3]);
-
-    currentQuestion = questions[7];
-
-    time = 5; //change this to actual time when ready as well
-    
-    startCountdown();
-
-    $("#first-choice").on("click", function() {
         youAreWrong();
-    });
-
-    $("#second-choice").on("click", function() {
-        youAreWrong();
-    });
-
-    $("#third-choice").on("click", function() {
-        youAreWrong();
-    });
-
-    $("#fourth-choice").on("click", function() {
-        youAreRight();
     });
 }
 
