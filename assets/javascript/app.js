@@ -60,16 +60,35 @@ function countdown2() {
 
 function nextQuestion() {
     if (currentQuestion === questions[0]) {
+        removeButtons();
         secondQuestion();
     } else if (currentQuestion === questions[1]) {
+        removeButtons();
         thirdQuestion();
     } else if (currentQuestion === questions[2]) {
+        removeButtons();
         fourthQuestion();
     } else if (currentQuestion === questions[3]) {
+        removeButtons();
         fifthQuestion();
     } else if (currentQuestion === questions[4]) {
         endGame();
     }
+}
+function removeButtons() {
+    $("#first-choice").remove();
+    $("#second-choice").remove();
+    $("#third-choice").remove();
+    $("#fourth-choice").remove();
+
+    var choice1 = $("<div>").attr("id", "first-choice");
+    $("#answers-box").append(choice1);
+    var choice2 = $("<div>").attr("id", "second-choice");
+    $("#answers-box").append(choice2);
+    var choice3 = $("<div>").attr("id", "third-choice");
+    $("#answers-box").append(choice3);
+    var choice4 = $("<div>").attr("id", "fourth-choice");
+    $("#answers-box").append(choice4);
 }
 
 
@@ -132,24 +151,28 @@ function firstQuestion() {
     startCountdown();
 
     $("#first-choice").on("click", function() {
+        console.log("clicked on firstQuestion");
         youAreRight();
         $("#right-or-wrong").text("You are a king!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/lion_king_happy.jpg");
     });
 
     $("#second-choice").on("click", function() {
+        console.log("clicked on firstQuestion");
         youAreWrong();
         $("#right-or-wrong").text("That's disappointing.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/lion_king_disappointed.jpg");
     });
 
     $("#third-choice").on("click", function() {
+        console.log("clicked on firstQuestion");
         youAreWrong();
         $("#right-or-wrong").text("That's disappointing.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/lion_king_disappointed.jpg");
     });
 
     $("#fourth-choice").on("click", function() {
+        console.log("clicked on firstQuestion");
         youAreWrong();
         $("#right-or-wrong").text("That's disappointing.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/lion_king_disappointed.jpg");
@@ -159,6 +182,7 @@ function firstQuestion() {
 function secondQuestion() {
     $(".reveal-card").hide();
     $(".question-card").show();
+    
     
     $("#question-box").text(questions[1]);
 
@@ -174,24 +198,28 @@ function secondQuestion() {
     startCountdown();
 
     $("#first-choice").on("click", function() {
+        console.log("clicked on secondQuestion");
         youAreRight();
         $("#right-or-wrong").text("Shockingly well done!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/producers_shocked.jpg");
     });
 
     $("#second-choice").on("click", function() {
+        console.log("clicked on secondQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Maybe next time.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/producers_nope.jpg");
     });
 
     $("#third-choice").on("click", function() {
+        console.log("clicked on secondQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Maybe next time.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/producers_nope.jpg");
     });
 
     $("#fourth-choice").on("click", function() {
+        console.log("clicked on secondQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Maybe next time.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/producers_nope.jpg");
@@ -216,24 +244,28 @@ function thirdQuestion() {
     startCountdown();
 
     $("#first-choice").on("click", function() {
+        console.log("clicked on thirdQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Sad.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/phantom_sad.jpg");
     });
 
     $("#second-choice").on("click", function() {
+        console.log("clicked on thirdQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Sad.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/phantom_sad.jpg");
     });
 
     $("#third-choice").on("click", function() {
+        console.log("clicked on thirdQuestion");
         youAreRight();
         $("#right-or-wrong").text("You are correct!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/phantom_happy.jpg");
     });
 
     $("#fourth-choice").on("click", function() {
+        console.log("clicked on thirdQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Sad.");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/phantom_sad.jpg");
@@ -258,24 +290,28 @@ function fourthQuestion() {
     startCountdown();
 
     $("#first-choice").on("click", function() {
+        console.log("clicked on fourthQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Noooooo!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/phantom_no.jpg");
     });
 
     $("#second-choice").on("click", function() {
+        console.log("clicked on fourthQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Noooooo!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/phantom_no.jpg");
     });
 
     $("#third-choice").on("click", function() {
+        console.log("clicked on fourthQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Noooooo!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/phantom_no.jpg");
     });
 
     $("#fourth-choice").on("click", function() {
+        console.log("clicked on fourthQuestion");
         youAreRight();
         $("#right-or-wrong").text("Well done!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/phantom_applaud.jpg");
@@ -300,24 +336,28 @@ function fifthQuestion() {
     startCountdown();
 
     $("#first-choice").on("click", function() {
+        console.log("clicked on fifthQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Nope!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/broadway_sign.jpg");
     });
 
     $("#second-choice").on("click", function() {
+        console.log("clicked on fifthQuestion");
         youAreRight();
         $("#right-or-wrong").text("Yes!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/broadway_sign.jpg");
     });
 
     $("#third-choice").on("click", function() {
+        console.log("clicked on fifthQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Nope!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/broadway_sign.jpg");
     });
 
     $("#fourth-choice").on("click", function() {
+        console.log("clicked on fifthQuestion");
         youAreWrong();
         $("#right-or-wrong").text("Nope!");
         $("#win-lose-pic").attr("src", "../TriviaGame/assets/images/broadway_sign.jpg");
