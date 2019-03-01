@@ -15,7 +15,7 @@ var answers = {
 
 var currentQuestion;
 
-var time = 5; //change this to 30 or whatever when ready for longer time
+var time = 20; 
 
 var time2 = 5;
 
@@ -75,6 +75,7 @@ function nextQuestion() {
         endGame();
     }
 }
+
 function removeButtons() {
     $("#first-choice").remove();
     $("#second-choice").remove();
@@ -90,8 +91,6 @@ function removeButtons() {
     var choice4 = $("<div>").attr("id", "fourth-choice");
     $("#answers-box").append(choice4);
 }
-
-
 
 function youAreRight() {
     clearInterval(timeInterval);
@@ -138,7 +137,7 @@ function endGame() {
 
 
 function firstQuestion() {
-    $("#time-box").text(30);
+    $("#time-box").text(20);
 
     $("#question-box").text(questions[0]);
 
@@ -182,6 +181,7 @@ function firstQuestion() {
 function secondQuestion() {
     $(".reveal-card").hide();
     $(".question-card").show();
+    $("#time-box").text(20);
     
     
     $("#question-box").text(questions[1]);
@@ -193,7 +193,7 @@ function secondQuestion() {
 
     currentQuestion = questions[1];
 
-    time = 5; //change this to actual time when ready as well
+    time = 20;
     
     startCountdown();
 
@@ -229,6 +229,7 @@ function secondQuestion() {
 function thirdQuestion() {
     $(".reveal-card").hide();
     $(".question-card").show();
+    $("#time-box").text(20);
 
     $("#question-box").text(questions[2]);
 
@@ -239,7 +240,7 @@ function thirdQuestion() {
 
     currentQuestion = questions[2];
         
-    time = 5; //change this to actual time when ready as well
+    time = 20;
     
     startCountdown();
 
@@ -275,6 +276,7 @@ function thirdQuestion() {
 function fourthQuestion() {
     $(".reveal-card").hide();
     $(".question-card").show();
+    $("#time-box").text(20);
 
     $("#question-box").text(questions[3]);
 
@@ -285,7 +287,7 @@ function fourthQuestion() {
 
     currentQuestion = questions[3];
 
-    time = 5; //change this to actual time when ready as well
+    time = 20;
     
     startCountdown();
 
@@ -321,6 +323,7 @@ function fourthQuestion() {
 function fifthQuestion() {
     $(".reveal-card").hide();
     $(".question-card").show();
+    $("#time-box").text(20);
 
     $("#question-box").text(questions[4]);
 
@@ -331,7 +334,7 @@ function fifthQuestion() {
 
     currentQuestion = questions[4];
 
-    time = 5; //change this to actual time when ready as well
+    time = 20;
     
     startCountdown();
 
